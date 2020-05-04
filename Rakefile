@@ -6,6 +6,7 @@ $conf = Hocon.load('hocon/seize.conf')
 
 desc ''
 task :sdgs do
+  print "seriesCode,iso2cd,year,value\n"
   $conf['seriesCodes'].each {|seriesCode|
     $stderr.print "#{seriesCode}\n"
     cmd = "curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/octet-stream' -d 'seriesCodes=#{seriesCode}&timePeriodStart=2018' 'https://unstats.un.org/SDGAPI/v1/sdg/Series/DataCSV'"
